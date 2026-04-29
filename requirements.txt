@@ -1,0 +1,5 @@
+supabase==1.0.0
+requests
+aiohttp
+python-dotenv
+tqdm
