@@ -1,6 +1,14 @@
 {
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "framework": null,
   "rewrites": [
     { "source": "/files", "destination": "/api/files" },
     { "source": "/download/:filename", "destination": "/api/download?filename=:filename" }
-  ]
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
