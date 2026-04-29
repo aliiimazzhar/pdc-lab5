@@ -6,6 +6,7 @@ function getEnv() {
   return {
     supabaseUrl: process.env.SUPABASE_URL,
     supabaseKey: process.env.SUPABASE_KEY,
+    supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
     bucketName: process.env.BUCKET_NAME,
     localFolder: process.env.LOCAL_STORAGE_FOLDER || '../samples',
   };
@@ -21,7 +22,9 @@ function getStorage() {
   if (!isSupabaseReady()) {
     return null;
   }
-  const client = createClient(env.supabaseUrl, env.supabaseKey);
+  // Prefer service role key when available for server-side operations
+  const keyToUse = env.supabaseServiceRoleKey || env.supabaseKey;
+  const client = createClient(env.supabaseUrl, keyToUse);
   return client.storage;
 }
 
