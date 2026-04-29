@@ -9,3 +9,4 @@ downloads_api/
 local_storage/
 generate_samples.py
 upload_download.py
+requirements.txt
